@@ -27,5 +27,4 @@ class RegularTodoFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_regular_todo, container, false)
     }
 
-
 }

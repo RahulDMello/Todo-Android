@@ -19,41 +19,43 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:contentScrim="?attr/colorPrimary"
-                app:expandedTitleGravity="top"
+                android:fitsSystemWindows="true"
+                app:title=" // TODO:"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:contentDescription="todo"
-                    android:text=" // TODO:"
-                    android:textColor="#f7f7f7"
+                    android:textSize="32sp"
+                    android:text="HELLO"
+                    android:layout_margin="50dp"
                     app:layout_collapseMode="parallax"
-                    app:layout_collapseParallaxMultiplier="0.5" />
-
+                    app:layout_collapseParallaxMultiplier="0.2"/>
                 <androidx.appcompat.widget.Toolbar
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
                     app:layout_collapseMode="pin">
-
-                    <com.google.android.material.tabs.TabLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <com.google.android.material.tabs.TabItem
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:text="Home" />
-
-                        <com.google.android.material.tabs.TabItem
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:text="Todo" />
-                    </com.google.android.material.tabs.TabLayout>
                 </androidx.appcompat.widget.Toolbar>
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tab_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom">
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Home" />
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Todo" />
+                </com.google.android.material.tabs.TabLayout>
             </com.google.android.material.appbar.CollapsingToolbarLayout>
         </com.google.android.material.appbar.AppBarLayout>
 
