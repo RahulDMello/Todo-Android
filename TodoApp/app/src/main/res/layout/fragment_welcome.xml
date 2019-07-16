@@ -23,7 +23,6 @@
                 android:layout_gravity="center"
                 android:text="What would you like // TODO: ?"
                 android:contentDescription="What would you like todo?"/>
-
     </LinearLayout>
 
 </FrameLayout>
