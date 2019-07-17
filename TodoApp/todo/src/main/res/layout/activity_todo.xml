@@ -75,6 +75,17 @@
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             app:navGraph="@navigation/todo_nav_graph" />
 
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNav"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@color/primaryDarkColor"
+            android:alpha="0.9"
+            app:itemTextColor="@color/primaryTextColor"
+            android:textSize="18sp"
+            app:menu="@menu/menu_todo_nav" />
+
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </layout>
