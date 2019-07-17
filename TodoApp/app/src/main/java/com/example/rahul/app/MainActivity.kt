@@ -32,7 +32,9 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    fun onTodoClick(v: View) {
-        Navigation.findNavController(v).navigate(R.id.todoActivity)
+    override fun onPause() {
+        super.onPause()
+        finish()
     }
+
 }

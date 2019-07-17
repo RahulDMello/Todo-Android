@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools" android:id="@+id/app_nav_graph"
-            app:startDestination="@id/welcomeFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_nav_graph"
+    app:startDestination="@+id/todoActivity">
 
-    <fragment android:id="@+id/welcomeFragment" android:name="com.example.rahul.app.WelcomeFragment"
-              android:label="fragment_welcome" tools:layout="@layout/fragment_welcome"/>
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.example.rahul.app.WelcomeFragment"
+        android:label="fragment_welcome"
+        tools:layout="@layout/fragment_welcome" />
     <activity
         android:id="@+id/todoActivity"
         android:name="com.example.rahul.todo.TodoActivity"
