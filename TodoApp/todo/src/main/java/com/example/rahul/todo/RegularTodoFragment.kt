@@ -6,6 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
+import com.example.rahul.todo.databinding.FragmentRegularTodoBinding
+import com.example.rahul.todo.tools.TodoAdapter
+import com.example.rahul.todo.tools.TodoViewModel
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -19,12 +25,22 @@ private const val ARG_PARAM2 = "param2"
  */
 class RegularTodoFragment : Fragment() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_regular_todo, container, false)
+        val binding = FragmentRegularTodoBinding.inflate(inflater)
+        binding.lifecycleOwner = this
+        val viewModel = ViewModelProviders.of(this)[TodoViewModel::class.java]
+        binding.viewModel = viewModel
+        val adapter = TodoAdapter()
+        binding.recycler.adapter = adapter
+
+        viewModel.todos.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                adapter.submitList(it)
+            }
+        })
+
+        return binding.root
     }
 
 }
