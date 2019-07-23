@@ -14,6 +14,9 @@ class TodoViewModel: ViewModel() {
     private val scope = CoroutineScope(Dispatchers.Default)
     private val repository = TodoRepository()
     private var _todos = MutableLiveData<List<TodoListDto>>()
+
+    var selectedTodoIndex = MutableLiveData<Int>()
+
     val todos: LiveData<List<TodoListDto>>
         get() = _todos
 

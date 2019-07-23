@@ -9,5 +9,14 @@
         android:id="@+id/regularTodoFragment"
         android:name="com.example.rahul.todo.RegularTodoFragment"
         android:label="fragment_regular_todo"
-        tools:layout="@layout/fragment_regular_todo" />
+        tools:layout="@layout/fragment_regular_todo" >
+        <action
+            android:id="@+id/action_regularTodoFragment_to_todoDetailsBottomSheet"
+            app:destination="@id/todoDetailsBottomSheet" />
+    </fragment>
+    <fragment
+        android:id="@+id/todoDetailsBottomSheet"
+        android:name="com.example.rahul.todo.TodoDetailsBottomSheet"
+        android:label="fragment_todo_details_bottom_sheet"
+        tools:layout="@layout/fragment_todo_details_bottom_sheet" />
 </navigation>

@@ -2,22 +2,15 @@ package com.example.rahul.todo
 
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.example.rahul.todo.databinding.FragmentRegularTodoBinding
 import com.example.rahul.todo.tools.TodoAdapter
 import com.example.rahul.todo.tools.TodoViewModel
-
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
@@ -30,13 +23,24 @@ class RegularTodoFragment : Fragment() {
         val binding = FragmentRegularTodoBinding.inflate(inflater)
         binding.lifecycleOwner = this
         val viewModel = ViewModelProviders.of(this)[TodoViewModel::class.java]
+        viewModel.selectedTodoIndex.value = -1
         binding.viewModel = viewModel
-        val adapter = TodoAdapter()
+        val adapter = TodoAdapter{index: Int ->
+            viewModel.selectedTodoIndex.value = index
+        }
         binding.recycler.adapter = adapter
 
         viewModel.todos.observe(viewLifecycleOwner, Observer {
             it?.let {
                 adapter.submitList(it)
+            }
+        })
+
+        viewModel.selectedTodoIndex.observe(viewLifecycleOwner, Observer {index ->
+            index.takeIf { it != -1 }?.let {
+                // TODO: change to use navigation component 2.1.0-alpha3 ++
+                // findNavController().navigate(R.id.action_regularTodoFragment_to_todoDetailsBottomSheet)
+                TodoDetailsBottomSheet().show(fragmentManager, TodoDetailsBottomSheet::class.java.canonicalName)
             }
         })
 
