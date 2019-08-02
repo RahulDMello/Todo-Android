@@ -30,8 +30,8 @@ class RegularTodoFragment : Fragment() {
         }
         binding.recycler.adapter = adapter
 
-        viewModel.todos.observe(viewLifecycleOwner, Observer {
-            it?.let {
+        viewModel.todos.observe(viewLifecycleOwner, Observer { todos ->
+            todos?.let {
                 adapter.submitList(it)
             }
         })
@@ -40,7 +40,7 @@ class RegularTodoFragment : Fragment() {
             index.takeIf { it != -1 }?.let {
                 // TODO: change to use navigation component 2.1.0-alpha3 ++
                 // findNavController().navigate(R.id.action_regularTodoFragment_to_todoDetailsBottomSheet)
-                TodoDetailsBottomSheet().show(fragmentManager, TodoDetailsBottomSheet::class.java.canonicalName)
+                TodoDetailsBottomSheet(viewModel.todos.value?.get(index)).show(fragmentManager, TodoDetailsBottomSheet::class.java.canonicalName)
             }
         })
 
