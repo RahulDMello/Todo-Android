@@ -43,6 +43,8 @@ class TodoViewHolder(private val binding: TodoListItemViewBinding) : RecyclerVie
         if (todos.size > 1)
             binding.todo2.text = todos[1].todo
 
+        binding.card.setCardBackgroundColor(item.color.toLong(16).toInt())
+
         binding.card.setOnClickListener {
             onItemClick(position)
         }

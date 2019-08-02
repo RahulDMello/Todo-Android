@@ -6,6 +6,7 @@ import kotlinx.serialization.Serializable
 data class TodoListDto(
     val title: String,
     val todoList: List<TodoDto>,
+    val color: String = "ffffa040",
     val photo: String? = null
 )
 
