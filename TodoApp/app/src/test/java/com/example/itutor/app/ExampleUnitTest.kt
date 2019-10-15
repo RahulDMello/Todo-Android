@@ -1,4 +1,4 @@
-package com.example.rahul.app
+package com.example.itutor.app
 
 import org.junit.Test
 

@@ -1,4 +1,4 @@
-package com.example.rahul.todo;
+package com.example.itutor.todo;
 
 import android.content.Context;
 import androidx.test.InstrumentationRegistry;

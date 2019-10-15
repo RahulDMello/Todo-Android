@@ -1,12 +1,12 @@
-package com.example.rahul.todo.tools
+package com.example.itutor.todo.tools
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.rahul.todo.databinding.TodoListItemViewBinding
-import com.example.rahul.todo.service.dto.TodoListDto
+import com.example.itutor.todo.databinding.TodoListItemViewBinding
+import com.example.itutor.todo.service.dto.TodoListDto
 
 class TodoAdapter(private val onItemClick: (Int) -> Unit) :
     ListAdapter<TodoListDto, TodoViewHolder>(TodoListDiffCallback()) {

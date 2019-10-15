@@ -1,4 +1,4 @@
-package com.example.rahul.todo.service.dto
+package com.example.itutor.todo.service.dto
 
 import kotlinx.serialization.Serializable
 

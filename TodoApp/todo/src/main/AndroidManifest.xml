@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.example.rahul.todo">
+          package="com.example.itutor.todo">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-    <application>
-        <activity android:name="com.example.rahul.todo.TodoActivity">
+    <application
+        android:theme="@style/AppTheme">
+        <activity android:name=".TodoActivity">
         </activity>
     </application>
 

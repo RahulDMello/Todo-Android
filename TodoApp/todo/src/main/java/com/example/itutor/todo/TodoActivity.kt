@@ -1,11 +1,11 @@
-package com.example.rahul.todo
+package com.example.itutor.todo
 
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
-import com.example.rahul.todo.databinding.ActivityTodoBinding
+import com.example.itutor.todo.databinding.ActivityTodoBinding
 
 class TodoActivity : AppCompatActivity() {
 

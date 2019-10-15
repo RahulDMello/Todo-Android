@@ -1,4 +1,4 @@
-package com.example.rahul.todo
+package com.example.itutor.todo
 
 
 import android.os.Bundle
@@ -8,9 +8,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.example.rahul.todo.databinding.FragmentRegularTodoBinding
-import com.example.rahul.todo.tools.TodoAdapter
-import com.example.rahul.todo.tools.TodoViewModel
+import com.example.itutor.todo.databinding.FragmentRegularTodoBinding
+import com.example.itutor.todo.tools.TodoAdapter
+import com.example.itutor.todo.tools.TodoViewModel
 
 /**
  * A simple [Fragment] subclass.
@@ -22,8 +22,9 @@ class RegularTodoFragment : Fragment() {
         // Inflate the layout for this fragment
         val binding = FragmentRegularTodoBinding.inflate(inflater)
         binding.lifecycleOwner = this
-        val viewModel = ViewModelProviders.of(this)[TodoViewModel::class.java]
-        viewModel.selectedTodoIndex.value = -1
+        val viewModel = ViewModelProviders.of(this)[TodoViewModel::class.java].apply {
+            selectedTodoIndex.value = -1
+        }
         binding.viewModel = viewModel
         val adapter = TodoAdapter{index: Int ->
             viewModel.selectedTodoIndex.value = index

@@ -40,24 +40,6 @@
                     android:layout_height="?attr/actionBarSize"
                     app:layout_collapseMode="pin" />
 
-                <!--<com.google.android.material.tabs.TabLayout-->
-                <!--android:id="@+id/tab_layout"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_gravity="bottom">-->
-
-                <!--<com.google.android.material.tabs.TabItem-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_gravity="center"-->
-                <!--android:text="Home" />-->
-
-                <!--<com.google.android.material.tabs.TabItem-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_gravity="center"-->
-                <!--android:text="Todo" />-->
-                <!--</com.google.android.material.tabs.TabLayout>-->
             </com.google.android.material.appbar.CollapsingToolbarLayout>
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -80,10 +62,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:background="@color/primaryDarkColor"
             android:alpha="0.9"
-            app:itemTextColor="@color/primaryTextColor"
+            android:background="@color/primaryDarkColor"
             android:textSize="18sp"
+            app:itemTextColor="@color/primaryTextColor"
             app:menu="@menu/menu_todo_nav" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

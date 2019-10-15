@@ -1,14 +1,13 @@
-package com.example.rahul.todo.tools
+package com.example.itutor.todo.tools
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.rahul.todo.service.TodoRepository
-import com.example.rahul.todo.service.dto.TodoListDto
+import com.example.itutor.todo.service.TodoRepository
+import com.example.itutor.todo.service.dto.TodoListDto
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class TodoViewModel: ViewModel() {
     private val scope = CoroutineScope(Dispatchers.Default)

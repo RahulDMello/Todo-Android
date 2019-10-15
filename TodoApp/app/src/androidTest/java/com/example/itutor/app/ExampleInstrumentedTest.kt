@@ -1,4 +1,4 @@
-package com.example.rahul.app
+package com.example.itutor.app
 
 import androidx.test.InstrumentationRegistry
 import androidx.test.runner.AndroidJUnit4

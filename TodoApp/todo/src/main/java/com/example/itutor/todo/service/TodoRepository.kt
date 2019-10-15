@@ -1,7 +1,7 @@
-package com.example.rahul.todo.service
+package com.example.itutor.todo.service
 
-import com.example.rahul.todo.service.dto.TodoDto
-import com.example.rahul.todo.service.dto.TodoListDto
+import com.example.itutor.todo.service.dto.TodoDto
+import com.example.itutor.todo.service.dto.TodoListDto
 
 class TodoRepository {
 

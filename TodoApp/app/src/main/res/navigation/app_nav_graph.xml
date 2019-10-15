@@ -7,11 +7,11 @@
 
     <fragment
         android:id="@+id/welcomeFragment"
-        android:name="com.example.rahul.app.WelcomeFragment"
+        android:name="com.example.itutor.app.WelcomeFragment"
         android:label="fragment_welcome"
         tools:layout="@layout/fragment_welcome" />
     <activity
         android:id="@+id/todoActivity"
-        android:name="com.example.rahul.todo.TodoActivity"
+        android:name="com.example.itutor.todo.TodoActivity"
         android:label="TodoActivity" />
 </navigation>
