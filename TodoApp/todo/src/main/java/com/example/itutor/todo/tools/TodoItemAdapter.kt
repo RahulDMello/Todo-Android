@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.itutor.todo.databinding.TodoItemsViewBinding
 import com.example.itutor.todo.service.dto.TodoDto
 
-class TodoItemAdapter(private val onItemClick: (Int) -> Unit) :
+class TodoItemAdapter(private val onItemClick: (TodoDto) -> Unit) :
     ListAdapter<TodoDto, TodoItemViewHolder>(TodoItemDiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodoItemViewHolder {
         return TodoItemViewHolder.from(parent)
@@ -32,11 +32,14 @@ class TodoItemDiffCallback : DiffUtil.ItemCallback<TodoDto>() {
 class TodoItemViewHolder(private val binding: TodoItemsViewBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(item: TodoDto, onItemClick: (Int) -> Unit, position: Int) {
+    fun bind(item: TodoDto, onItemClick: (TodoDto) -> Unit, position: Int) {
         binding.checkbox.isChecked = item.isChecked
         binding.title.text = item.todo
+        binding.title.setOnClickListener {
+            binding.checkbox.isChecked = !binding.checkbox.isChecked
+        }
         binding.detailsBtn.setOnClickListener {
-            onItemClick(position)
+            onItemClick(item)
         }
     }
 

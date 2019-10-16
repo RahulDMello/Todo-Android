@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
+        android:padding="12dp"
+        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -11,19 +13,29 @@
         <CheckBox
             android:id="@+id/checkbox"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
 
         <TextView
             android:id="@+id/title"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:clickable="true"
+            android:focusable="true"
             android:singleLine="false" />
 
         <ImageButton
             android:id="@+id/detailsBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/todo_item_view_details_button" />
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:contentDescription="@string/todo_item_view_details_button"
+            android:maxWidth="48dp"
+            android:maxHeight="48dp"
+            android:src="@drawable/top_right_arrow"
+            android:tint="@color/secondaryDarkColor" />
 
     </LinearLayout>
 

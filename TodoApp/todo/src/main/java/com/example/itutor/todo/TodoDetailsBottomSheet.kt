@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.itutor.todo.databinding.FragmentTodoDetailsBottomSheetBinding
@@ -24,7 +25,11 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
  */
 class TodoDetailsBottomSheet(private val todoListDto: TodoListDto?) : BottomSheetDialogFragment() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         val binding = FragmentTodoDetailsBottomSheetBinding.inflate(inflater)
         binding.lifecycleOwner = this
         val factory = TodoItemViewModelFactory(todoListDto ?: TodoListDto("", listOf()))
@@ -33,8 +38,9 @@ class TodoDetailsBottomSheet(private val todoListDto: TodoListDto?) : BottomShee
         binding.headerColorPlaceholder.imageTintList =
             ColorStateList.valueOf(viewModel.todoList.value?.color?.toColorInt() ?: 0)
 
-        val adapter = TodoItemAdapter{
+        val adapter = TodoItemAdapter {
             // TODO: Show the details for that todo
+            Toast.makeText(context, it.todo, Toast.LENGTH_SHORT).show()
         }
 
         binding.recycler.adapter = adapter
@@ -43,6 +49,7 @@ class TodoDetailsBottomSheet(private val todoListDto: TodoListDto?) : BottomShee
             todos?.let {
                 adapter.submitList(it.todoList)
             }
+            binding.listTitle.text = todos.title
         })
 
         return binding.root
