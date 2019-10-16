@@ -1,17 +1,17 @@
 package com.example.itutor.todo
 
 import android.app.Dialog
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.example.itutor.todo.databinding.FragmentTodoDetailsBottomSheetBinding
 import com.example.itutor.todo.service.dto.TodoListDto
 import com.example.itutor.todo.tools.TodoItemViewModel
 import com.example.itutor.todo.tools.TodoItemViewModelFactory
-import com.example.itutor.todo.tools.TodoViewModel
+import com.example.itutor.todo.tools.toColorInt
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -20,7 +20,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
  * A simple [BottomSheetDialogFragment] subclass.
  *
  */
-class TodoDetailsBottomSheet(val todoListDto: TodoListDto?) : BottomSheetDialogFragment() {
+class TodoDetailsBottomSheet(private val todoListDto: TodoListDto?) : BottomSheetDialogFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val binding = FragmentTodoDetailsBottomSheetBinding.inflate(inflater)
@@ -28,6 +28,8 @@ class TodoDetailsBottomSheet(val todoListDto: TodoListDto?) : BottomSheetDialogF
         val factory = TodoItemViewModelFactory(todoListDto ?: TodoListDto("", listOf()))
         val viewModel = ViewModelProviders.of(this, factory)[TodoItemViewModel::class.java]
         binding.viewModel = viewModel
+        binding.headerColorPlaceholder.imageTintList =
+            ColorStateList.valueOf(viewModel.todoList.value?.color?.toColorInt() ?: 0)
         return binding.root
     }
 
@@ -40,8 +42,9 @@ class TodoDetailsBottomSheet(val todoListDto: TodoListDto?) : BottomSheetDialogF
             bottomSheetDialog.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet)
                 ?.let { bottomSheet ->
                     bottomSheet.layoutParams?.height =
-                        (resources.displayMetrics.heightPixels.toDouble() * 0.85).toInt()
-                    BottomSheetBehavior.from(bottomSheet).peekHeight = bottomSheet.layoutParams?.height ?: 0
+                        (resources.displayMetrics.heightPixels.toDouble() * 0.9).toInt()
+                    BottomSheetBehavior.from(bottomSheet).peekHeight =
+                        bottomSheet.layoutParams?.height ?: 0
                     bottomSheet.requestLayout()
                 }
         }
