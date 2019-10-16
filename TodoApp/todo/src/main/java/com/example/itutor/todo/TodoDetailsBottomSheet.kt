@@ -6,9 +6,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.itutor.todo.databinding.FragmentTodoDetailsBottomSheetBinding
 import com.example.itutor.todo.service.dto.TodoListDto
+import com.example.itutor.todo.tools.TodoItemAdapter
 import com.example.itutor.todo.tools.TodoItemViewModel
 import com.example.itutor.todo.tools.TodoItemViewModelFactory
 import com.example.itutor.todo.tools.toColorInt
@@ -30,6 +32,19 @@ class TodoDetailsBottomSheet(private val todoListDto: TodoListDto?) : BottomShee
         binding.viewModel = viewModel
         binding.headerColorPlaceholder.imageTintList =
             ColorStateList.valueOf(viewModel.todoList.value?.color?.toColorInt() ?: 0)
+
+        val adapter = TodoItemAdapter{
+            // TODO: Show the details for that todo
+        }
+
+        binding.recycler.adapter = adapter
+
+        viewModel.todoList.observe(viewLifecycleOwner, Observer { todos ->
+            todos?.let {
+                adapter.submitList(it.todoList)
+            }
+        })
+
         return binding.root
     }
 
