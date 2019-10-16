@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -41,9 +42,13 @@ class RegularTodoFragment : Fragment() {
             index.takeIf { it != -1 }?.let {
                 // TODO: change to use navigation component 2.1.0-alpha3 ++
                 // findNavController().navigate(R.id.action_regularTodoFragment_to_todoDetailsBottomSheet)
-                TodoDetailsBottomSheet(viewModel.todos.value?.get(index)).show(fragmentManager!!, TodoDetailsBottomSheet::class.java.canonicalName)
+                TodoDetailsBottomSheet(viewModel.todos.value?.get(it)).show(fragmentManager!!, TodoDetailsBottomSheet::class.java.canonicalName)
             }
         })
+
+        binding.fab.setOnClickListener {
+            Toast.makeText(context, "Created new Todo!", Toast.LENGTH_SHORT).show()
+        }
 
         return binding.root
     }
