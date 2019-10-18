@@ -1,15 +1,16 @@
 package com.example.itutor.todo.tools
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.itutor.todo.databinding.TodoItemsViewBinding
-import com.example.itutor.todo.service.dto.TodoDto
+import com.example.itutor.todo.service.model.Todo
 
-class TodoItemAdapter(private val onItemClick: (TodoDto) -> Unit) :
-    ListAdapter<TodoDto, TodoItemViewHolder>(TodoItemDiffCallback()) {
+class TodoItemAdapter(private val onItemClick: (Todo) -> Unit) :
+    ListAdapter<Todo, TodoItemViewHolder>(TodoItemDiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodoItemViewHolder {
         return TodoItemViewHolder.from(parent)
     }
@@ -19,12 +20,12 @@ class TodoItemAdapter(private val onItemClick: (TodoDto) -> Unit) :
     }
 }
 
-class TodoItemDiffCallback : DiffUtil.ItemCallback<TodoDto>() {
-    override fun areItemsTheSame(oldItem: TodoDto, newItem: TodoDto): Boolean {
+class TodoItemDiffCallback : DiffUtil.ItemCallback<Todo>() {
+    override fun areItemsTheSame(oldItem: Todo, newItem: Todo): Boolean {
         return oldItem === newItem
     }
 
-    override fun areContentsTheSame(oldItem: TodoDto, newItem: TodoDto): Boolean {
+    override fun areContentsTheSame(oldItem: Todo, newItem: Todo): Boolean {
         return oldItem == newItem
     }
 }
@@ -32,11 +33,13 @@ class TodoItemDiffCallback : DiffUtil.ItemCallback<TodoDto>() {
 class TodoItemViewHolder(private val binding: TodoItemsViewBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(item: TodoDto, onItemClick: (TodoDto) -> Unit, position: Int) {
-        binding.checkbox.isChecked = item.isChecked
-        binding.title.text = item.todo
+    fun bind(item: Todo, onItemClick: (Todo) -> Unit, position: Int) {
+//        binding.checkbox.isChecked = item.isChecked
+//        binding.title.text = item.todo
+        binding.item = item
         binding.title.setOnClickListener {
             binding.checkbox.isChecked = !binding.checkbox.isChecked
+            Log.e("CHECKED", "${item.isChecked}")
         }
         binding.detailsBtn.setOnClickListener {
             onItemClick(item)

@@ -35,6 +35,8 @@ class RegularTodoFragment : Fragment() {
         viewModel.todos.observe(viewLifecycleOwner, Observer { todos ->
             todos?.let {
                 adapter.submitList(it)
+                adapter.notifyDataSetChanged()
+                Toast.makeText(context, "list updated", Toast.LENGTH_SHORT).show()
             }
         })
 
@@ -43,6 +45,8 @@ class RegularTodoFragment : Fragment() {
                 // TODO: change to use navigation component 2.1.0-alpha3 ++
                 // findNavController().navigate(R.id.action_regularTodoFragment_to_todoDetailsBottomSheet)
                 TodoDetailsBottomSheet(viewModel.todos.value?.get(it)).show(fragmentManager!!, TodoDetailsBottomSheet::class.java.canonicalName)
+                // TODO: remove and add actual add list functionality
+                viewModel.addTodoList(viewModel.todos.value!![it].copy())
             }
         })
 

@@ -3,6 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="item"
+            type="com.example.itutor.todo.service.model.Todo" />
+
+    </data>
+
     <LinearLayout
         android:padding="12dp"
         android:gravity="center"
@@ -14,6 +21,7 @@
             android:id="@+id/checkbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:checked="@={item.checked}"
             android:layout_weight="1" />
 
         <TextView
@@ -23,6 +31,7 @@
             android:layout_weight="5"
             android:clickable="true"
             android:focusable="true"
+            android:text="@{item.todo}"
             android:singleLine="false" />
 
         <ImageButton

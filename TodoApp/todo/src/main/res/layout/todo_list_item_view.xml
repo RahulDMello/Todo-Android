@@ -3,6 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="item"
+            type="com.example.itutor.todo.service.model.TodoList" />
+
+    </data>
+
     <androidx.cardview.widget.CardView
         android:id="@+id/card"
         android:layout_width="match_parent"
@@ -23,6 +30,7 @@
 
             <TextView
                 android:id="@+id/title"
+                android:text="@{item.title}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/secondaryColor"

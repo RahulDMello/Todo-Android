@@ -5,13 +5,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.itutor.todo.service.dto.TodoListDto
+import com.example.itutor.todo.service.model.TodoList
 import java.lang.IllegalArgumentException
 
-class TodoItemViewModel(todoList: TodoListDto): ViewModel() {
+class TodoItemViewModel(todoList: TodoList): ViewModel() {
 
-    private var _todoList: MutableLiveData<TodoListDto> = MutableLiveData()
+    private var _todoList: MutableLiveData<TodoList> = MutableLiveData()
 
-    val todoList: LiveData<TodoListDto>
+    val todoList: LiveData<TodoList>
         get() = _todoList
 
     init {
@@ -19,7 +20,7 @@ class TodoItemViewModel(todoList: TodoListDto): ViewModel() {
     }
 }
 
-class TodoItemViewModelFactory(val todoList: TodoListDto): ViewModelProvider.Factory {
+class TodoItemViewModelFactory(val todoList: TodoList): ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         @Suppress("UNCHECKED_CAST")
         return (TodoItemViewModel(todoList) as? T) ?: throw IllegalArgumentException()

@@ -6,10 +6,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.itutor.todo.databinding.TodoListItemViewBinding
-import com.example.itutor.todo.service.dto.TodoListDto
+import com.example.itutor.todo.service.model.TodoList
 
 class TodoAdapter(private val onItemClick: (Int) -> Unit) :
-    ListAdapter<TodoListDto, TodoViewHolder>(TodoListDiffCallback()) {
+    ListAdapter<TodoList, TodoViewHolder>(TodoListDiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodoViewHolder {
         return TodoViewHolder.from(parent)
     }
@@ -20,20 +20,21 @@ class TodoAdapter(private val onItemClick: (Int) -> Unit) :
 
 }
 
-class TodoListDiffCallback : DiffUtil.ItemCallback<TodoListDto>() {
-    override fun areItemsTheSame(oldItem: TodoListDto, newItem: TodoListDto): Boolean {
+class TodoListDiffCallback : DiffUtil.ItemCallback<TodoList>() {
+    override fun areItemsTheSame(oldItem: TodoList, newItem: TodoList): Boolean {
         return oldItem === newItem
     }
 
-    override fun areContentsTheSame(oldItem: TodoListDto, newItem: TodoListDto): Boolean {
+    override fun areContentsTheSame(oldItem: TodoList, newItem: TodoList): Boolean {
         return oldItem == newItem
     }
 }
 
-class TodoViewHolder(private val binding: TodoListItemViewBinding) : RecyclerView.ViewHolder(binding.root) {
+class TodoViewHolder(private val binding: TodoListItemViewBinding) :
+    RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(item: TodoListDto, onItemClick: (Int) -> Unit, position: Int) {
-        binding.title.text = item.title
+    fun bind(item: TodoList, onItemClick: (Int) -> Unit, position: Int) {
+        binding.item = item
         @Suppress("SpellCheckingInspection")
         val todos = item.todoList.filter { !it.isChecked }.take(2)
 

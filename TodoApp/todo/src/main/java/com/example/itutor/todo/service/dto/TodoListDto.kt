@@ -9,9 +9,3 @@ data class TodoListDto(
     val color: String = "ffffa040",
     val photo: String? = null
 )
-
-@Serializable
-data class TodoDto (
-    val isChecked: Boolean,
-    val todo: String
-)

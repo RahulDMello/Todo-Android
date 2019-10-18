@@ -10,7 +10,7 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.itutor.todo.databinding.FragmentTodoDetailsBottomSheetBinding
-import com.example.itutor.todo.service.dto.TodoListDto
+import com.example.itutor.todo.service.model.TodoList
 import com.example.itutor.todo.tools.TodoItemAdapter
 import com.example.itutor.todo.tools.TodoItemViewModel
 import com.example.itutor.todo.tools.TodoItemViewModelFactory
@@ -23,7 +23,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
  * A simple [BottomSheetDialogFragment] subclass.
  *
  */
-class TodoDetailsBottomSheet(private val todoListDto: TodoListDto?) : BottomSheetDialogFragment() {
+class TodoDetailsBottomSheet(private val todoList: TodoList?) : BottomSheetDialogFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,7 +32,7 @@ class TodoDetailsBottomSheet(private val todoListDto: TodoListDto?) : BottomShee
     ): View? {
         val binding = FragmentTodoDetailsBottomSheetBinding.inflate(inflater)
         binding.lifecycleOwner = this
-        val factory = TodoItemViewModelFactory(todoListDto ?: TodoListDto("", listOf()))
+        val factory = TodoItemViewModelFactory(todoList ?: TodoList("", listOf()))
         val viewModel = ViewModelProviders.of(this, factory)[TodoItemViewModel::class.java]
         binding.viewModel = viewModel
         binding.headerColorPlaceholder.imageTintList =
